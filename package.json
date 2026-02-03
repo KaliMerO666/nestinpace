@@ -9,10 +9,7 @@
     "build": "npm run build:datocms && npm run build:hugo",
     "dev": "npm run build:datocms && hugo server --config config.dev.toml"
   },
-  "dependencies": {
-    "datocms-client": "^3.0.0"
-  },
   "devDependencies": {
-    "datocms-cli": "^1.0.0"
+    "datocms-cli": "^1.0.12"
   }
 }
