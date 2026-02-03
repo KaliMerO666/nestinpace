@@ -5,7 +5,10 @@
 [build.environment]
   HUGO_VERSION = "0.121.0"
   NODE_VERSION = "18"
+  HUGO_ENV = "production"
 
-# Increase build timeout
-[build.processing]
-  skip_processing = false
+[context.production]
+  command = "npm run build:datocms && hugo --gc --minify --config config.prod.toml"
+
+[context.deploy-preview]
+  command = "npm run build:datocms && hugo --gc --minify --config config.dev.toml"
