@@ -8,7 +8,7 @@
     "build:datocms": "dato dump",
     "build:hugo": "hugo --config config.prod.toml --verbose",
     "build:assets": "your-asset-command-here",
-    "build": "npm run build:datocms && npm run build:hugo && npm run build:assets"
+    "build": "npm run build:datocms && hugo --config config.prod.toml -v"
 },
   "dependencies": {
     "imagesloaded": "^4.1.4",
