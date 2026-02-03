@@ -13,6 +13,6 @@
     "datocms-client": "^3.0.0"
   },
   "devDependencies": {
-    "dato-cli": "^5.0.0"
+    "datocms-cli": "^1.0.0"
   }
 }
