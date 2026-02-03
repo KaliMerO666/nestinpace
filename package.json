@@ -3,11 +3,11 @@
   "version": "1.0.0",
   "main": "index.js",
   "license": "MIT",
-  {
+ {
   "scripts": {
     "build:datocms": "dato dump",
-    "build:hugo": "hugo --gc --minify",
-    "build:assets": "your-asset-command",
+    "build:hugo": "hugo --verbose --debug",
+    "build:assets": "your-asset-command-here",
     "build": "npm run build:datocms && npm run build:hugo && npm run build:assets"
 },
   "dependencies": {
