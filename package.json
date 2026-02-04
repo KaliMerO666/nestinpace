@@ -7,20 +7,12 @@
     "node": "20"
   },
   "scripts": {
-    "build:datocms": "datocms dump",
+    "build:datocms": "dato dump",
     "build:hugo": "hugo --config config.prod.toml --gc --minify",
     "build": "npm run build:datocms && npm run build:hugo"
   },
+  "dependencies": {},
   "devDependencies": {
-    "@datocms/cli": "^1.0.0"
+    "datocms-client": "^1.0.0"
   }
 }
-```
-
-**Key changes:**
-- Changed `dato dump` to `datocms dump`
-- Using `@datocms/cli` package
-
-### 2. Update `.nvmrc`
-```
-20
