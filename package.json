@@ -3,9 +3,12 @@
   "version": "1.0.0",
   "description": "Nest in Pace - Hugo site with DatoCMS",
   "license": "MIT",
+  "engines": {
+    "node": "20"
+  },
   "scripts": {
     "build:datocms": "datocms dump",
-    "build:hugo": "hugo --config config.prod.toml --gc --minify --verbose",
+    "build:hugo": "hugo --config config.prod.toml --gc --minify",
     "build": "npm run build:datocms && npm run build:hugo",
     "dev": "npm run build:datocms && hugo server --config config.dev.toml"
   },
