@@ -1,0 +1,5 @@
+{
+  "devDependencies": {
+    "datocms-client": "^0.6.0"
+  }
+}
