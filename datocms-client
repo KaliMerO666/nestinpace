@@ -1,5 +1,7 @@
 {
-  "devDependencies": {
-    "datocms-client": "^0.6.0"
+  "scripts": {
+    "build:datocms": "npx datocms-client dump",
+    "build:hugo": "hugo --config config.prod.toml --gc --minify",
+    "build": "npm run build:datocms && npm run build:hugo"
   }
 }
