@@ -7,44 +7,18 @@ const htmlTag = require('html-tag');
 // into proper HTML tags:
 //
 // <meta name="description" content="foobar" />
-
 const toHtml = (tags) => (
   tags.map(({ tagName, attributes, content }) => (
     htmlTag(tagName, attributes, content)
   )).join("")
 );
 
-// Arguments that will receive the mapping function:
-//
-// * dato: lets you easily access any content stored in your DatoCMS
-//   administrative area;
-//
-// * root: represents the root of your project, and exposes commands to
-//   easily create local files/directories;
-//
-// * i18n: allows to switch the current locale to get back content in
-//   alternative locales from the first argument.
-//
-// Read all the details here:
-// https://github.com/datocms/js-datocms-client/blob/master/docs/dato-cli.md
-
-module.exports = (dato, root, i18n) => {
 module.exports = (dato, root, i18n) => {
   // Create config files
   root.createDataFile('data/settings.yml', 'yaml', {
     name: dato.site.name,
   });
 
-  // Create content pages
-  dato.works.forEach((work) => {
-    root.createPost(`content/works/${work.slug}.md`, 'yaml', {
-      frontmatter: {
-        title: work.title,
-        description: work.description,
-        date: work.publishedAt,
-      },
-      content: work.content,
-    });
   // Create a markdown file with content coming from the `about_page` item
   // type stored in DatoCMS
   root.createPost(`content/about.md`, 'yaml', {
@@ -81,4 +55,3 @@ module.exports = (dato, root, i18n) => {
     });
   });
 };
-
