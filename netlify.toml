@@ -1,11 +1,15 @@
-[build]
-  command = "npm run build"
-  publish = "public"
-  
-[build.environment]
-  HUGO_VERSION = "0.121.0"
-  NODE_VERSION = "18"
-  HUGO_ENV = "production"
-
-[context.production]
-  command = "npm run build:datocms && hugo --gc --minify --config config.prod.toml"
+{
+  "name": "creative-inc",
+  "version": "1.0.0",
+  "description": "Nest in Pace - Hugo site with DatoCMS",
+  "license": "MIT",
+  "scripts": {
+    "build:datocms": "datocms dump",
+    "build:hugo": "hugo --config config.prod.toml --gc --minify",
+    "build": "npm run build:datocms && npm run build:hugo",
+    "dev": "npm run build:datocms && hugo server --config config.dev.toml"
+  },
+  "devDependencies": {
+    "@datocms/cli": "^1.0.0"
+  }
+}
