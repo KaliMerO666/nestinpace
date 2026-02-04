@@ -11,7 +11,9 @@
     "build:hugo": "hugo --config config.prod.toml --gc --minify",
     "build": "npm run build:datocms && npm run build:hugo"
   },
-  "dependencies": {},
+  "dependencies": {
+    "html-tag": "^2.0.0"
+  },
   "devDependencies": {
     "datocms-client": "^1.0.0"
   }
