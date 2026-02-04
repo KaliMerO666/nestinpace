@@ -29,33 +29,22 @@ const toHtml = (tags) => (
 // https://github.com/datocms/js-datocms-client/blob/master/docs/dato-cli.md
 
 module.exports = (dato, root, i18n) => {
-
-  // Add to the existing Hugo config files some properties coming from data
-  // stored on DatoCMS
-  ['config.dev.toml', 'config.prod.toml'].forEach(file => {
-    root.addToDataFile(file, 'toml', {
-      title: dato.site.globalSeo.siteName,
-      languageCode: i18n.locale
-    });
-  });
-
-  // Create a YAML data file to store global data about the site
+module.exports = (dato, root, i18n) => {
+  // Create config files
   root.createDataFile('data/settings.yml', 'yaml', {
-    name: dato.site.globalSeo.siteName,
-    language: dato.site.locales[0],
-    intro: dato.home.introText,
-    copyright: dato.home.copyright,
-    // iterate over all the `social_profile` item types
-    socialProfiles: dato.socialProfiles.map(profile => {
-      return {
-        type: profile.profileType.toLowerCase().replace(/ +/, '-'),
-        url: profile.url,
-      };
-    }),
-    faviconMetaTags: toHtml(dato.site.faviconMetaTags),
-    seoMetaTags: toHtml(dato.home.seoMetaTags)
+    name: dato.site.name,
   });
 
+  // Create content pages
+  dato.works.forEach((work) => {
+    root.createPost(`content/works/${work.slug}.md`, 'yaml', {
+      frontmatter: {
+        title: work.title,
+        description: work.description,
+        date: work.publishedAt,
+      },
+      content: work.content,
+    });
   // Create a markdown file with content coming from the `about_page` item
   // type stored in DatoCMS
   root.createPost(`content/about.md`, 'yaml', {
